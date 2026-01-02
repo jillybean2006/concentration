@@ -36,7 +36,7 @@ function startGame() {
         card.innerHTML = `
             <div class="card-front"><i class="fas fa-star"></i></div>
             <div class="card-back"><img src="${cardImages[i]}" alt=""></div>
-        `
+        `; 
     card.onClick = flipCard;
     card.dataset.image = cardImages[i]
     gameBoard.appendChild(card)
@@ -129,7 +129,7 @@ function updateStats() {
     var secs = seconds % 60
     if (secs < 10) secs = "0" + secs
     
-    document.getElementById("time").textContent = mins + ":" + secs;
+    document.getElementById("time").textContent = minutes + ":" + secs;
 }
 
 function endGame() {
@@ -156,36 +156,3 @@ startGame();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    const cardHTML = <div class="card-front"><i class="fas fa-star"></i></div>
-                <div class="card-back"><img src="" alt=""></div>``
