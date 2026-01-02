@@ -79,25 +79,25 @@ function flipCard() {
     }
 }
 
-function checkForMatch() {
+function checkMatch() {
     var match = firstCard.dataset.image == secondCard.dataset.image;
 
     if (match) {
         setTimeout(() => {
-            firstCard.classList.add("matched")
-            secondCard.classList.add("matched")
-             matches++
-             updateStats()
-             resetCards()
+            firstCard.classList.add("matched");
+            secondCard.classList.add("matched");
+             matches++;
+             updateStats();
+             resetCards();
 
-             if(matches = 8) {
-                endGame()
+             if ((matches == 8)) {
+                endGame();
              }
         }, 500);
     }else {
         setTimeout(() => {
-            firstCard.classList.remove("flipped")
-            secondCard.classList.remove("flipped")
+            firstCard.classList.remove("flipped");
+            secondCard.classList.remove("flipped");
             resetCards()
         }, 1000);
     }
@@ -113,9 +113,46 @@ function resetCards() {
 
 
 function startTimer() {
+    timerRunning = true
+    timerInterval = setInterval(() => {
+        seconds++
+        updateStats()
+    }, 1000);
+}
+
+
+function updateStats() {
+    document.getElementById("moves").textContent = moves;
+    document.getElementById("matches").textContent = matches + "/8";
+
+    var minutes = Math.floor(seconds / 60)
+    var secs = seconds % 60
+    if (secs < 10) secs = "0" + secs
+    
+    document.getElementById("time").textContent = mins + ":" + secs;
+}
+
+function endGame() {
+    clearInterval(timerInterval)
+
+    document.getElementById("finalMoves").textContent = moves;
+    document.getElementById("finalTime").textContent =  document.getElementById("time").textContent;
+    document.getElementById("winModal").classList.add("show");
+}
+
+
+function newGame() {
+document.getElementById("winModal").classList.remove("show");
+clearInterval(timerInterval);
+startGame()
 
 }
 
+
+
+
+
+startGame();
 
 
 
