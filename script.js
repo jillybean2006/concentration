@@ -37,7 +37,7 @@ function startGame() {
             <div class="card-front"><i class="fas fa-star"></i></div>
             <div class="card-back"><img src="${cardImages[i]}" alt=""></div>
         `; 
-    card.onClick = flipCard;
+    card.onclick = flipCard;
     card.dataset.image = cardImages[i]
     gameBoard.appendChild(card)
     }
@@ -75,7 +75,7 @@ function flipCard() {
         canFlip = false;
         moves++
         updateStats()
-        checkForMatch()
+        checkMatch()
     }
 }
 
